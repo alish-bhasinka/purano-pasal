@@ -1,0 +1,68 @@
+.si-one {
+    background-color: #a9b5f77f; 
+    margin-top: 140px;
+    margin-left: 70px;
+    
+    width: 1046px;
+    height: 946px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50PX;
+
+}
+.all-singin{
+    margin-top: 120px;
+    margin-left: 168px;
+
+}
+.si-tw {
+    position: absolute;
+    background-color: #f5fc3a4f; 
+    margin-top: 39px;
+    margin-left: 150px;
+    border-radius: 50PX;
+    
+    width: 751px;
+    height: 866px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+dotlottie-wc{
+    position: absolute;
+
+   margin-left:235px;
+   margin-top:-750px;
+   width: 300px;
+   height:2000px;
+   
+
+}
+.si-form{
+    position: absolute;
+
+    margin:495px 0px 0px 235px ;
+
+}
+
+.password-wrapper {
+  position: relative;
+  width: 390px;
+  margin: 50px 0 0 -45px;
+}
+
+#password {
+  width: 350px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 20px;
+  padding-right: 40px; /* space for the icon */
+}
+
+#togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+}

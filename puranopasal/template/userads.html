@@ -1,0 +1,77 @@
+{% extends 'signinpage01.html' %}
+
+{% block content %}
+
+
+<div class="divpopup" id="divpopup">
+    <form action="{% url 'product_cost' %}"  method="post" class="div_frm" enctype="multipart/form-data">
+        {% csrf_token %}
+    <input type="text" name="numberid" placeholder="Id Number"class="dividnum_inpt" id="dividnum_inpt"><br>
+    <input type="text" name="modelname" placeholder="Model Name"class="div_inpt"><br>
+    <input type="text" name="brandname" placeholder="Brand Name"class="div_inpt"><br>
+    <label class="div_cate">Category:</label>
+    <select name="category"  class="div_catesel">
+        <option value="1">laptop</option>
+        <option value="2">headphone</option>
+        <option value="3">iron</option>
+        <option value="4">microoven</option>
+        <option value="5">mobile</option>
+        <option value="6">refrigerator</option>
+        <option value="7">speaker</option>
+        <option value="8">tv</option>
+        <option value="9">vacuum</option>
+
+
+    </select>
+    <label class="div_dev">Delivery:</label>
+    <select name="delivery"  class="div_devsel">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+
+
+    <label class="div_neg">Negotiable:</label>
+    <select name="negotiable"  class="div_sel">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+    <br>                
+    <input type="text" name="date" placeholder="Ads Date"class="div_inpt"><br>
+    <input type="text" name="expiredate" placeholder="Ads Expiry"class="div_inpt"><br>
+    <input type="text" name="price" placeholder="Price"class="div_inpt"><br>
+    <input type="text" name="processor" placeholder="Processor"class="div_inpt"><br>
+    <input type="text" name="ram" placeholder="Ram"class="div_inpt"><br>
+    <input type="text" name="HDD" placeholder="HDD"class="div_inpt"><br>
+    <input type="text" name="screensize" placeholder="Screen Size"class="div_inpt"><br>
+    <input type="text" name="battery" placeholder="Battery"class="div_inpt"><br>
+
+    <input type="file" class="div_img" name="div_picture" value="profile_picture" >
+    <p class="div_p">select image</p><br> 
+<textarea  name="description" rows="4" cols="50" class="div_desc" placeholder="Please describe your product more" ></textarea>
+    <input type="submit" name="submit" class="div_btn" value="OK">
+
+</form>
+<button class="divedt_btn" id="divedt_btn"  onclick="divnumopenpop()">edit</button>
+<p class="div-pone">{{prderr}}</p><br>
+<label class="divsld_lbclr">select for delete or sold</label>
+<form action="{% url 'product_sold' %}"  method="post" class="divsld_frm" >
+{% csrf_token %}
+<input type="text" name="idnumber" placeholder="Id Number"class="divsld_inpt"><br>
+<label class="divsld_lb">sold:</label>
+<select name="sold"  class="divsld_sel">
+    <option value="sold">sold</option>
+    <option value="unsold">unsold</option>
+</select>
+
+<input type="submit" name="submit" class="divsld_btn" value="OK">
+<input type="submit" name="submit" class="divdlsl_btn" value="delete">
+
+
+</form>
+
+<p class="div-dlsl">{{prddelerr}}</p><br>
+
+</div>
+</div>
+
+{%endblock%}

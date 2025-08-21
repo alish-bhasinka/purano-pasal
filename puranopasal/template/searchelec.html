@@ -1,0 +1,23 @@
+{% extends 'electron01.html' %}
+{% block content %}
+<div class="user-list">
+    {% load static %}
+{% for sl in serlist %}
+{% if sl.expiredate >= today_date %}
+
+                <div class="user-bor">
+                        <img src="{{ sl.image.url }}" alt="Ad Image" class="user-image">
+                        <a href="{% url 'product_info' %}?id={{ sl.product_id }}" class="user-modenam">{{ sl.model_name }}</a>
+
+
+
+                        
+                        <p class="user-prc">Nep Rs {{ sl.price }}</p>
+
+                        
+                        
+                </div>
+{%endif%}
+{% endfor %}
+</div>
+{% endblock %}

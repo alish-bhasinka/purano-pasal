@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/divhomes06.css' %}">
+    <link rel="stylesheet" href="{%static 'css\signinpage12.css' %}">
+    <link rel="stylesheet" href="{%static 'css\info06.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{% static 'javascript/searchvoice.js' %}" ></script>
+<script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+  type="module"
+></script>
+
+</head>
+<body class="bdy-bck">
+    <div class="bg-up">
+        <nav class="divone">
+        <!-- navigation bar for website-->
+
+            <img class="divoneimg" src="{% static 'image\next.png' %}" alt="Logo">
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'elect' %}">Electronics</a>
+            <div class="search-container">
+                <form id="searchForm" action="{% url 'search_list' %}"  method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="searchBox" class="search-bar" placeholder="Search electronic device " aria-label="Search" name="search-data">
+                <button type="sumbit"  class="search-button">
+                <i class="fas fa-search"></i>
+                </button>
+            </form>
+            </div>
+    
+
+            {% if request.session.phonenumber == None %}
+
+            <a href="{% url 'signup' %}"><i class="fas fa-user-alt"></i>  Sign up</a>
+            
+            <a href="{% url 'signin' %}"><i class="fas fa-user-alt"></i> Sign in</a>
+            {%endif%}
+
+      {% if request.session.phonenumber != None %}
+        <a href="{% url 'signinpage' %}"><i class="fas fa-user-alt"></i> Profile</a>
+
+        <a href="{% url 'logout' %}" >logout</a>
+        {%endif%}
+
+        </nav>
+        
+        
+
+
+    <!-- advertisment bar for website-->
+
+    </div>
+
+    <div class="info_divone">
+
+        <div class="info-user">
+             <div class="info-view">
+                <img src="{{ prdsl.image.url }}" alt="Ad Image" class="info-mainimg">
+                <img src="{{ prdsl.image.url }}" alt="Ad Image" class="info-frntimg">
+
+
+                <h1 class="view-name">View</h1>
+            </div>
+            <div class="info-allinfo">
+                <table class="allinfo-name">
+                    <tr>
+                        <th> <p class="info">Info</p></th>
+                     </tr>
+                     <tr>
+                       <td> <p >ModelName:{{ prdsl.model_name }}</p></td>
+                    </tr>
+                    <tr>
+                        <td><p >Number:{{ prdsl.phonenumber }}</p></td>
+                     </tr>
+                     <tr>
+                        <td><p >Price:{{ prdsl.price }}</p></td>
+                        <form  action="{% url 'payment' %}?id={{ prdsl.product_id }}" method="post">
+                          {% csrf_token %} 
+
+                        <td><input type="submit" value="Buy" style="width:50px;height:20px;border-radius:5px;background-color:rgb(255, 183, 0);margin:-70px 0px 0px -25px;transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></td>
+
+                        </form>
+</tr>
+
+<tr>
+<td>
+<dotlottie-wc
+  src="https://lottie.host/1865f588-2ad7-49e1-a2a8-b79c1640e013/f7QVTbpOQ9.lottie"
+  style="width:100px;height:50px; margin-top:-55px; margin-left:50px;"
+    speed="1"
+  autoplay
+  loop
+></dotlottie-wc>
+
+</td>
+                        
+</tr>
+                </table>
+            </div>
+            <div class="info-dviinfo">
+                <div class="info-geninfo">
+                  <p class="gen">General</p>
+                  <table class="gen-table">
+                     <tr>
+                       <td> <p >Name Product:{{ prdsl.model_name }}</p></td>
+                    </tr>
+                    
+                     <tr>
+                        <td><p >Delivery:{{ prdsl.delivery }}</p></td>
+                     </tr>
+                     <tr>
+                        <td><p >Negotiable:{{ prdsl.negotiable }}</p></td>
+                     </tr>
+                     <tr>
+                        <td><p >Ads Expiry:{{ prdsl.expiredate }}</p></td>
+                     </tr>
+                     <tr>
+                        <td><p >Status:{{ prdsl.sold }}</p></td>
+                     </tr>
+                </table>
+                </div>
+    
+            </div>
+            <div class="info-hwiinfo">
+                <div class="info-spinfo">
+                    <p class="sep">Specification</p>
+                    <table class="sep-table">
+                        <tr>
+                          <td> <p >Processor:{{ prdsl.processor }}</p></td>
+                       </tr>
+                       <tr>
+                           <td><p >Ram(GB):{{ prdsl.ram }}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p >HDD(GB):{{ prdsl.HDD }}</p></td>
+                         </tr>
+                        <tr>
+                           <td><p >Screen Size:{{ prdsl.screensize }}</p></td>
+                        </tr>
+                        <tr>
+                           <td><p >Battery:{{ prdsl.battery }}</p></td>
+                        </tr>
+                        
+                   </table>
+   
+                </div>
+
+            </div>
+        </div>
+        <div class="div_des">
+            <p class="p_des">Description</p>
+            <p>{{ prdsl.description }}</p>
+        </div>
+</body>
+</html>

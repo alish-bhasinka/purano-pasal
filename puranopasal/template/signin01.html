@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>signin</title>
+    <link rel="stylesheet" href="{%static 'css\divhomes06.css' %}">
+    <link rel="stylesheet" href="{%static 'css\signin06.css' %}">
+    <link rel="stylesheet" href="{%static 'css\signinpage12.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{% static 'javascript/poppup01.js' %}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" >
+    <script src="{% static 'javascript/imagechange01.js' %}"></script>
+    <script src="{% static 'javascript/searchvoice.js' %}" ></script>
+    <script
+    src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+    type="module"
+    ></script>
+</head>
+<body class="bdy-bck">
+    <div class="bg-up">
+        <nav class="divone">
+        <!-- navigation bar for website-->
+
+            <img class="divoneimg" src="{% static 'image\next.png' %}" alt="Logo">
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'elect' %}">Electronics</a>
+            <div class="search-container">
+                <form id="searchForm" action="{% url 'search_list' %}"  method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="searchBox" class="search-bar" placeholder="Search electronic device" aria-label="Search" name="search-data">
+                <button type="sumbit"  class="search-button">
+                <i class="fas fa-search"></i>
+                </button>
+            </form>
+            </div>
+    
+
+            {% if request.session.phonenumber == None %}
+
+            <a href="{% url 'signup' %}"><i class="fas fa-user-alt"></i>  Sign up</a>
+            
+            <a href="{% url 'signin' %}"><i class="fas fa-user-alt"></i> Sign in</a>
+            {%endif%}
+
+            
+        </nav>
+        
+        <a href="{% url 'signinpage' %}" class="name_siginpage">{{name.first_name}}</a>
+        
+        {% if request.session.phonenumber != None %}
+        <a href="{% url 'logout' %}" class="name_logout">logout</a>
+        {%endif%}
+
+
+    <!-- advertisment bar for website-->
+
+    </div>
+
+    <div class="ad-bar">
+        <img src="{% static 'image/samsun02.jpg' %}" alt="Ad Image" class="ad-image" id="ad-imageone" data-img1="{% static 'image/samsun02.jpg' %}" data-img2="{% static 'image/newbal.jpg' %}" data-img3="{% static 'image/sc.jpg' %}">
+
+    </div>
+
+<div class="all-singin">
+    <div class="si-one">
+        <div class="si-tw">
+<dotlottie-wc
+  src="https://lottie.host/30e86cc8-2e4d-40e1-b8f0-bb62349b77ba/p5O9fHCgOC.lottie"
+
+
+  
+  speed="1"
+  autoplay
+  loop
+ background-color="black"
+
+></dotlottie-wc>
+
+
+            <div class="si-form">
+                <form action="signin" method="post">
+                    {% csrf_token %} 
+                    <input type="text" name="number" placeholder="Mobile Number" style="width:390px;height:50px;border-radius:5px;font-size:20px;margin:0px 0px 0px -45px;"><br>
+                    <div class="password-wrapper">
+                    <input type="password" name="password"class="password" id="password" placeholder="Password">
+                    </div>                 
+                    <input type="submit" value="login" style="width:290px;height:50px;border-radius:5px;background-color:rgb(255, 183, 0);margin:50px 0px 0px 1px;transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><br>
+                    <p style="font-size:20px;margin:30px 5px;color:red;white-space: nowrap;">{{errs}}</p><br> 
+
+                
+                    </form>
+                
+    
+            </div>
+    
+            
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+  const toggle = document.getElementById("togglePassword");
+  const password = document.getElementById("password");
+
+  toggle.addEventListener("click", () => {
+    const type = password.type === "password" ? "text" : "password";
+    password.type = type;
+    toggle.classList.toggle("fa-eye");
+    toggle.classList.toggle("fa-eye-slash");
+  });
+</script>
+
+</body>
+</html>

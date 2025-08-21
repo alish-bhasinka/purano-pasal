@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>singup</title>
+    <link rel="stylesheet" href="{% static 'css/divhomes06.css' %}">
+    <link rel="stylesheet" href="{% static 'css\signup05.css' %}">
+    <link rel="stylesheet" href="{%static 'css\signinpage012.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{% static 'javascript/imagechange01.js' %}"></script>
+    <script src="{% static 'javascript/searchvoice.js' %}" ></script>
+
+
+
+</head>
+<body class="bdy-bck">
+    <div class="bg-up">
+        <nav class="divone">
+        <!-- navigation bar for website-->
+
+            <img class="divoneimg" src="{% static 'image\next.png' %}" alt="Logo">
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'elect' %}">Electronics</a>
+            <div class="search-container">
+                <form id="searchForm" action="{% url 'search_list' %}"  method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="searchBox" class="search-bar" placeholder="Search electronic device at puranopasal" aria-label="Search" name="search-data">
+                <button type="sumbit"  class="search-button">
+                <i class="fas fa-search"></i>
+                </button>
+            </form>
+            </div>
+    
+
+            {% if request.session.phonenumber == None %}
+
+            <a href="{% url 'signup' %}"><i class="fas fa-user-alt"></i>  Sign up</a>
+            
+            <a href="{% url 'signin' %}"><i class="fas fa-user-alt"></i> Sign in</a>
+            {%endif%}
+
+            
+        </nav>
+        
+        <a href="{% url 'signinpage' %}" class="name_siginpage">{{name.first_name}}</a>
+        
+        {% if request.session.phonenumber != None %}
+        <a href="{% url 'logout' %}" class="name_logout">logout</a>
+        {%endif%}
+
+
+    <!-- advertisment bar for website-->
+
+    </div>
+<div class="all-singup">
+    <div class="log-one">
+        <img src="{%static 'image\gadgets.png' %}" alt="Ad Image" class="login-img">
+
+        <div class="log-tw">
+            <h1 class="log-h1">Create Account</h1>
+            <div class="log-thr">
+            <form class="log-form" action="signup" method="post">
+                {% csrf_token %} 
+                <input type="text" name="firstname" placeholder="FirstName" style="width:190px;height:50px;border-radius:10px;font-size:20px;margin-left:-295px;margin-top:40px;"><br>
+                <input type="text" name="middlename" placeholder="MiddleName" style="width:190px;height:50px;border-radius:10px;font-size:20px;margin-left:-295px;margin-top:10px;"><br>
+                <input type="text" name="lastname" placeholder="LastName" style="width:190px;height:50px;border-radius:10px;font-size:20px;margin-left:-295px;margin-top:10px;"><br>
+                <input type="text" name="phonenumber" placeholder="PhoneNumber" style="width:190px;height:50px;border-radius:10px;font-size:20px;margin-left:-295px;margin-top:10px;"><br>
+                <input type="text" name="password" placeholder="Password" style="width:190px;height:50px;border-radius:10px;font-size:20px;margin-left:-295px;margin-top:10px;"><br>
+                <input type="text" name="confirmpassword" placeholder="confirmPassword" style="width:190px;height:50px;border-radius:10px;font-size:20px;margin-left:-295px;margin-top:10px;"><br>
+
+                <input type="submit" value="Create" style="width:194px;height:50px;border-radius:10px;background-color:rgb(255, 183, 0);margin-left:-295px;margin-top:10px;transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" onclick="lgutopenpop()"><br>
+
+                </form>
+                <p style="font-size:20px;margin:40px 50px;color:red;white-space: nowrap;">{{err}}</p><br> 
+                </div>
+            
+
+        </div>
+
+
+
+</div>
+</body>
+</html>

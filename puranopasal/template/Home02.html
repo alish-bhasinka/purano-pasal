@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/divhomes06.css' %}">
+    <title>Home</title>
+    <link rel="stylesheet" href="{%static 'css/signinpage12.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="{% static 'javascript/imagechange01.js' %}"></script>
+    <script src="{% static 'javascript/searchvoice.js' %}" ></script>
+    <script src="{% static 'javascript/scroll.js' %}" ></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>    
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"type="module"></script>
+
+
+</head>
+<body class="bdy-bck" >
+   <dotlottie-wc
+  src="https://lottie.host/d11ba183-7364-4006-82bd-ead33f47d067/G38zsGZQCl.lottie"
+
+
+  style="position: fixed; top: 0; left: -5000; width: 100vw; height: 100vh; z-index: -1;"
+
+  autoplay
+  loop
+></dotlottie-wc>
+
+    <div class="bg-up">
+        <nav class="divone">
+        <!-- navigation bar for website-->
+
+            <img class="divoneimg" src="{% static 'image\next.png' %}" alt="Logo">
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'elect' %}">Electronics</a>
+            <div class="search-container">
+                <form id="searchForm" action="{% url 'search_list' %}"  method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="searchBox" class="search-bar" placeholder="Search electronic device " aria-label="Search" name="search-data">
+                <button type="sumbit"  class="search-button">
+                <i class="fas fa-search"></i>
+                </button>
+            </form>
+            </div>
+    
+
+            {% if request.session.phonenumber == None %}
+
+            <a href="{% url 'signup' %}"><i class="fas fa-user-alt"></i>  Sign up</a>
+            
+            <a href="{% url 'signin' %}"><i class="fas fa-user-alt"></i> Sign in</a>
+            {%endif%}
+
+        {% if request.session.phonenumber != None %}
+        <a href="{% url 'signinpage' %}" ><i class="fas fa-user-alt"></i> Profile</a>
+
+        <a href="{% url 'logout' %}" >logout</a>
+        {%endif%}
+
+        </nav>
+        
+
+
+
+    <!-- advertisment bar for website-->
+
+    </div>
+    <div class="ad-bar">
+        <img src="{% static 'image/samsun02.jpg' %}" alt="Ad Image" class="ad-image" id="ad-imageone" data-img1="{% static 'image/samsun02.jpg' %}" data-img2="{% static 'image/newbal.jpg' %}" data-img3="{% static 'image/sc.jpg' %}">
+
+
+    </div>
+    <div id="scrollItem">
+    <div class="sm-adone" >
+<img src="{% static 'image/fri.jpeg' %}" alt="Product image" width="350" height="550" style="border-radius: 51px;">
+    </div>
+<div class="sm-adtw" >
+<img src="{% static 'image/lab.jpeg' %}" alt="Product image" width="350" height="550" style="border-radius: 51px;">
+
+    </div>
+<div class="sm-adth" >
+<img src="{% static 'image/picture.jpg' %}" alt="Product image" width="350" height="550" style="border-radius: 51px;">
+
+    </div>
+    </div>
+
+        <!-- Recently view for website-->
+<div id="scrollItemBar">
+    <div class="user-bar" >
+        <h1 class="user-hd">Recently Viewed</h1>
+        <div class="user-borone">
+        <img src="{% static 'image\alt ears.jpg' %}" alt="Ad Image" class="user-imageone">
+        <h1 class="user-onenam">WONDERBOOM 3 Digital Lavender</h1>
+        <p class="user-oneprc">Nep Rs 6000</p>
+        </div>
+        <div class="user-bortw">
+            <img src="{% static 'image\apple.jpg' %}" alt="Ad Image" class="user-imagetw">
+            <h1 class="user-twnam">Apple Watch SE</h1>
+            <p class="user-twprc">Nep Rs 50000</p>
+            </div>
+
+        <div class="user-borthr">
+            <img src="{% static 'image\x box.jpg' %}" alt="Ad Image" class="user-imagethr">
+            <h1 class="user-thrnam">Microsoft Xbox Series X 1TB Video </h1>
+            <p class="user-thrprc">Nep Rs 20000</p>
+            </div>
+
+
+            <div class="user-borfur">
+                <img src="{% static 'image\apple 12.jpg' %}" alt="Ad Image" class="user-imagefur">
+                <h1 class="user-furnam">Apple iPhone 12 64GB </h1>
+                <p class="user-furprc">Nep Rs 10000</p>
+                </div>
+                <div class="user-borfv">
+                    <img src="{% static 'image\sony.jpg' %}" alt="Ad Image" class="user-imagefv">
+                    <h1 class="user-fvnam">Sony Speaker </h1>
+                    <p class="user-fvprc">Nep Rs 16500 </p>
+                    </div>
+        
+                <div class="user-borsx">
+                    <img src="{% static 'image\apple air.jpg' %}" alt="Ad Image" class="user-imagesx">
+                    <h1 class="user-sxnam">Apple Airpod </h1>
+                    <p class="user-sxprc">Nep Rs 5363</p>
+                    </div>
+                        
+                  </div>
+
+
+    </div>
+</div>
+    <!--Company information-->
+    <div id="scrollItemInf">
+    <div class="ad-cmp">
+        <img src="{% static 'image\logo2.jpg' %}" alt="Ad Image" class="ad-cmpimg">
+        <h1 class="ad-h1">GET TO KNOW US</h1>
+        <a class="ad-h2" href="#">About puranopasal.com</a>
+        <center style="line-height: 50px;">
+            <a href="#" style="margin: 0 15px;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="margin: 0 15px;"><i class="fab fa-google"></i></a>
+            <a href="#" style="margin: 0 15px;"><i class="fab fa-twitter"></i></a>
+        </center>
+    
+
+
+    </div>
+</div>
+
+</body>
+</html>

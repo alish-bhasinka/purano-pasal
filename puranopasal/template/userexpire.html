@@ -1,0 +1,29 @@
+{% extends 'signinpage01.html' %}
+{% block content %}
+<!--this code for expiredate button--> 
+
+<div class="user-exdtlist" id="user-exdtlist">
+    {% for dt in prdsl %} 
+    {% if dt.phonenumber == acct.phonenumber %}
+    {% if dt.expiredate <= today_date %}
+
+
+    <div class="user-allbor">
+    
+            <img src="{{ dt.image.url }}" alt="Ad Image" class="user-allimage">
+            <a href="{% url 'product_info' %}?id={{ dt.product_id }}" class="user-allmodenam">{{ dt.model_name }}</a>
+            
+            <p class="user-allprc">Nep Rs {{ dt.price }}</p>
+            <p class="user-allid">ID Number : {{dt.product_id}}
+
+            </div>     
+            {%endif%}
+            {%endif%}
+
+            {% endfor %}
+    
+            </div>
+
+    </div>
+
+{%endblock%}

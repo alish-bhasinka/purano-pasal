@@ -1,0 +1,31 @@
+{% extends 'signinpage01.html' %}
+
+{% block content %}
+
+<div class="user-alllist" id="user-alllist">
+
+    
+            
+    {% for slpd in prdsl %} 
+    {% if slpd.phonenumber == acct.phonenumber %}
+    <div class="user-allbor">
+    
+            <img src="{{ slpd.image.url }}" alt="Ad Image" class="user-allimage">
+            <a href="{% url 'product_info' %}?id={{ slpd.product_id }}" class="user-allmodenam">{{ slpd.model_name }}</a>
+            
+            <p class="user-allprc">Nep Rs {{ slpd.price }}</p>
+            <p class="user-allid">ID Number : {{ slpd.product_id }}</p>
+           
+        
+            
+    
+            </div>
+            {%endif%}
+    
+            {% endfor %}
+    
+    
+            </div>
+        
+    
+{% endblock %}

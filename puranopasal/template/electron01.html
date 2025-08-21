@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/divhomes06.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all-list02.css' %}">
+    <link rel="stylesheet" href="{%static 'css/signinpage10.css' %}">
+
+    <title>Electronics</title>
+    <link rel="stylesheet" href="{% static 'css\elect06.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="{% static 'javascript/searchvoice.js' %}" ></script>
+   <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+  type="module"
+></script>
+
+</head>
+<body class="bdy-bck">
+    <div class="bg-up">
+        <nav class="divone">
+        <!-- navigation bar for website-->
+
+            <img class="divoneimg" src="{% static 'image\next.png' %}" alt="Logo">
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'elect' %}">Electronics</a>
+            <div class="search-container">
+                <form id="searchForm" action="{% url 'search_list' %}"  method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" id="searchBox" class="search-bar" placeholder="Search electronic device " aria-label="Search" name="search-data">
+                <button type="sumbit"  class="search-button">
+                <i class="fas fa-search"></i>
+                </button>
+            </form>
+            </div>
+    
+
+            {% if request.session.phonenumber == None %}
+
+            <a href="{% url 'signup' %}"><i class="fas fa-user-alt"></i>  Sign up</a>
+            
+            <a href="{% url 'signin' %}"><i class="fas fa-user-alt"></i> Sign in</a>
+            {%endif%}
+
+            {% if request.session.phonenumber != None %}
+                <a href="{% url 'signinpage' %}" ><i class="fas fa-user-alt"> </i> Profile</a>
+
+        <a href="{% url 'logout' %}" >logout</a>
+        {%endif%}
+        </nav>
+        
+        
+        
+
+
+    <!-- advertisment bar for website-->
+
+    </div>
+
+<div class="divel"> 
+    <div class="search-elcant">
+
+
+</div>
+    
+<div class="el-lists">
+<div class="el-liststw">
+<a class="el-atop"   href="{% url 'elect' %}">      <span style="background-color: black;color:white;">Electronic</span></a><br>
+<a class="el-zoom" href="{% url 'laptop_list' %}" >Laptop</a><br>
+<a class="el-zoom" href="{% url 'mobile_list' %}" >Mobile</a><br>
+<a class="el-zoom" href="{% url 'speaker_list' %}">Speaker</a><br>
+<a class="el-zoom" href="{% url 'headphone_list' %}">Headphone</a><br>
+<a class="el-zoom" href="{% url 'tv_list' %}">Tv</a><br>
+<a class="el-zoom" href="{% url 'refrigerator_list' %}">Refrigerator</a><br>
+<a class="el-zoom" href="{% url 'microoven_list' %}">Micro oven</a><br>
+<a class="el-zoom" href="{% url 'vaccum_list' %}">Vacuum cleaner</a><br>
+<a class="el-zoom" href="{% url 'iron_list' %}">Iron</a><br>
+</div>
+
+</div>
+<div >
+    {% block content %}
+    <!-- Default content if not overridden -->
+    {% endblock %}
+    
+    </div>
+            
+
+
+
+</body>
+</html>
